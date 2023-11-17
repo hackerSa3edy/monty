@@ -1,8 +1,16 @@
 #include "monty.h"
 
 char *token = NULL, *buffer = NULL, *safe_buffer = NULL;
-FILE *fd;
+FILE *fd = NULL;
 
+/**
+ * main - create an interpreter for Monty ByteCodes files.
+ *
+ * @argc: number of arguments.
+ * @argv: arguments' values.
+ *
+ * Return: (EXIT_SUCCESS) always success, (EXIT_FAILURE) otherwise.
+ */
 int main(int argc, char **argv)
 {
 	unsigned int line_number = 0;
@@ -35,7 +43,10 @@ int main(int argc, char **argv)
 		safe_buffer = safeBuffer(buffer);
 		token = strtok(safe_buffer, " ");
 		if (token == NULL || strcmp(token, "#") == 0)
+		{
+			free(safe_buffer);
 			continue;
+		}
 
 		instruction = opcode_handler(token);
 		if (instruction == NULL)
@@ -53,5 +64,5 @@ int main(int argc, char **argv)
 	free(buffer);
 	fclose(fd);
 	free_stqu(stack_queue);
-	return (0);
+	return (EXIT_SUCCESS);
 }

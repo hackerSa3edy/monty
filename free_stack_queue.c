@@ -9,12 +9,9 @@
 void free_stqu(stack_t *head)
 {
 	stack_t *temp = NULL;
+
 	if (head == NULL)
 		return;
-
-	temp = head;
-	while (temp->prev != NULL)
-		temp = temp->prev;
 
 	while (head != NULL)
 	{

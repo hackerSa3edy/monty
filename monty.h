@@ -45,10 +45,11 @@ extern char *token;
 extern char *buffer;
 extern char *safe_buffer;
 
-void (*opcode_handler(char *opcode))(stack_t **stack, unsigned int line_number);
+void (*opcode_handler(char *))(stack_t **stack, unsigned int line_number);
 void (*instruction)(stack_t **stack, unsigned int line_number);
 char *safeBuffer(char *buffer);
 void free_stqu(stack_t *stack);
+void *safe_malloc(size_t size, stack_t *stack);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);

@@ -3,9 +3,9 @@
 /**
  * opcode_handler - hanldes opcodes.
  *
- * @stack: current node.
- * @line_number: the new node's data.
+ * @opcode: opcode.
  *
+ * Return: Nothing.
  */
 void (*opcode_handler(char *opcode))(stack_t **stack, unsigned int line_number)
 {

@@ -4,7 +4,7 @@
  * pop - deletes the last element
  *
  * @stack: current node.
- * @line_number: the new node's data.
+ * @line_number: number of the line in the monty bytecode file.
  *
  */
 void pop(stack_t **stack, unsigned int line_number)
@@ -15,6 +15,11 @@ void pop(stack_t **stack, unsigned int line_number)
 		return;
 
 	temp = *stack;
+	if (temp == NULL)
+		return;
+	while (temp->next != NULL)
+		temp = temp->next;
+
 	if (temp != NULL)
 	{
 		temp_node = temp;
@@ -26,7 +31,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		dprintf(STDOUT_FILENO, "L%i: can't pop an empty stack", line_number);
+		dprintf(STDERR_FILENO, "L%i: can't pop an empty stack", line_number);
 		fclose(fd);
 		free(buffer);
 		free(safe_buffer);
