@@ -1,6 +1,6 @@
 #include "monty.h"
 
-char *token = NULL;
+char *token = NULL, *buffer = NULL, *safe_buffer = NULL;
 FILE *fd;
 
 int main(int argc, char **argv)
@@ -8,7 +8,6 @@ int main(int argc, char **argv)
 	unsigned int line_number = 0;
 	ssize_t line_length;
 	size_t buffer_size;
-	char *buffer = NULL, *safe_buffer = NULL;
 	stack_t *stack_queue = NULL;
 
 	if (argc == 1 || argc > 2)
@@ -37,7 +36,6 @@ int main(int argc, char **argv)
 		token = strtok(safe_buffer, " ");
 		if (token == NULL || strcmp(token, "#") == 0)
 			continue;
-		dprintf(STDOUT_FILENO, "token: %s\t", token);
 
 		instruction = opcode_handler(token);
 		if (instruction == NULL)
@@ -54,6 +52,6 @@ int main(int argc, char **argv)
 
 	free(buffer);
 	fclose(fd);
-	free_stqu(&stack_queue);
+	free_stqu(stack_queue);
 	return (0);
 }
