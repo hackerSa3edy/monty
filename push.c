@@ -20,7 +20,7 @@ void push(stack_t **head, unsigned int line_number)
 	if (token == NULL)
 		push_errors_handle(*head, line_number);
 	for (index = 0; token[index]; index++)
-		if (!isdigit(token[index]))
+		if (!isdigit(token[index]) && token[index] != '-')
 			push_errors_handle(*head, line_number);
 
 	n = atoi(token);
