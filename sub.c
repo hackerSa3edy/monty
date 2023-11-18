@@ -1,15 +1,15 @@
 #include "monty.h"
 
-void safe_add(stack_t *stack, int line_number);
+void safe_sub(stack_t *stack, int line_number);
 
 /**
- * add - sum the top 2 nodes data.
+ * sub - subtracte the top 2 nodes data.
  *
  * @stack: current node.
  * @line_number: number of the line in the monty bytecode file.
  *
  */
-void add(stack_t **stack, unsigned int line_number)
+void sub(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = NULL, *temp_node = NULL, *new_node = NULL;
 	int sum = 0;
@@ -19,7 +19,7 @@ void add(stack_t **stack, unsigned int line_number)
 
 	temp = *stack;
 	if (temp == NULL)
-		safe_add(*stack, line_number);
+		safe_sub(*stack, line_number);
 
 	while (temp->next != NULL)
 		temp = temp->next;
@@ -27,13 +27,13 @@ void add(stack_t **stack, unsigned int line_number)
 	if (temp != NULL)
 	{
 		if (temp->prev == NULL)
-			safe_add(*stack, line_number);
+			safe_sub(*stack, line_number);
 
 		sum += temp->n;
 		temp_node = temp;
 		temp = temp->prev;
 		temp->next = NULL;
-		sum += temp->n;
+		sum -= temp->n;
 		free(temp_node);
 
 		temp_node = temp;
@@ -62,13 +62,13 @@ void add(stack_t **stack, unsigned int line_number)
 
 
 /**
- * safe_add - handle add errors.
+ * safe_sub - handle sub errors.
  *
  * @stack: stack.
  * @line_number: line number
 */
-void safe_add(stack_t *stack, int line_number)
+void safe_sub(stack_t *stack, int line_number)
 {
-	dprintf(STDERR_FILENO, "L%i: can't add, stack too short\n", line_number);
+	dprintf(STDERR_FILENO, "L%i: can't sub, stack too short\n", line_number);
 	safe_exit(stack);
 }
