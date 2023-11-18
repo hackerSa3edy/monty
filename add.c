@@ -59,5 +59,5 @@ void add(stack_t **stack, unsigned int line_number)
 void safe_add(stack_t *stack, int line_number)
 {
 	dprintf(STDERR_FILENO, "L%i: can't add, stack too short\n", line_number);
-	safe_exit(stack, line_number);
+	safe_exit(stack);
 }

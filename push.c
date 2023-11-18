@@ -59,5 +59,5 @@ void push(stack_t **head, unsigned int line_number)
 void push_errors_handle(stack_t *head, unsigned int line)
 {
 	dprintf(STDERR_FILENO, "L%i: usage: push integer\n", line);
-	safe_exit(head, line);
+	safe_exit(head);
 }

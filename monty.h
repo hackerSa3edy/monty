@@ -50,7 +50,7 @@ void (*instruction)(stack_t **stack, unsigned int line_number);
 char *safeBuffer(char *buffer);
 void free_stqu(stack_t *stack);
 void *safe_malloc(size_t size, stack_t *stack);
-void safe_exit(stack_t *stack, unsigned int line);
+void safe_exit(stack_t *stack);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);

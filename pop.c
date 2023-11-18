@@ -18,7 +18,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	if (temp == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%i: can't pop, stack empty", line_number);
-		safe_exit(*stack, line_number);
+		safe_exit(*stack);
 	}
 	while (temp->next != NULL)
 		temp = temp->next;

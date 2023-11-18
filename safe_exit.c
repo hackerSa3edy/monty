@@ -6,7 +6,7 @@
  * @stack: stack_t linked list
  * @line: line number
 */
-void safe_exit(stack_t *stack, unsigned int line)
+void safe_exit(stack_t *stack)
 {
 	fclose(fd);
 	free(buffer);
