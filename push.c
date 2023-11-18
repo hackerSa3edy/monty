@@ -3,7 +3,7 @@
 /**
  * push - adds a new node at the end of a stack_t list.
  *
- * @stack: current node.
+ * @head: current node.
  * @line_number: number of the line in the monty bytecode file.
  *
  */
@@ -29,15 +29,7 @@ void push(stack_t **head, unsigned int line_number)
 
 	if (*head == NULL)
 	{
-		*head = malloc(sizeof(stack_t));
-
-		if (*head == NULL)
-		{
-			fclose(fd);
-			free(buffer);
-			free(safe_buffer);
-			exit(EXIT_FAILURE);
-		}
+		*head = safe_malloc(sizeof(stack_t), NULL);
 		(*head)->n = n;
 		(*head)->prev = NULL;
 		(*head)->next = NULL;
