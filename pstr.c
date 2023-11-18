@@ -16,7 +16,10 @@ void pstr(stack_t **stack, unsigned int line_number)
 		return;
 	temp = *stack;
 	if (temp == NULL)
+	{
+		dprintf(STDOUT_FILENO, "%s", "\n");
 		return;
+	}
 
 	while (temp->next != NULL)
 		temp = temp->next;
