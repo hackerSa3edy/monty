@@ -19,7 +19,7 @@ void add(stack_t **stack, unsigned int line_number)
 
 	temp = *stack;
 	if (temp == NULL)
-		return;
+		safe_add(*stack, line_number);
 
 	while (temp->next != NULL)
 		temp = temp->next;
@@ -37,15 +37,26 @@ void add(stack_t **stack, unsigned int line_number)
 		free(temp_node);
 
 		temp_node = temp;
-		temp = temp->prev;
-		temp->next = NULL;
-		free(temp_node);
+		if (temp->prev != NULL)
+		{
+			temp = temp->prev;
+			temp->next = NULL;
+		}
 
 		new_node = safe_malloc(sizeof(stack_t), *stack);
 		new_node->n = sum;
 		new_node->next = NULL;
-		temp->next = new_node;
-		new_node->prev = temp;
+		if (temp->prev != NULL)
+		{
+			temp->next = new_node;
+			new_node->prev = temp;
+		}
+		else
+		{
+			free(temp_node);
+			new_node->prev = NULL;
+			*stack = new_node;
+		}
 	}
 }
 

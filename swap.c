@@ -17,7 +17,10 @@ void swap(stack_t **stack, unsigned int line_number)
 
 	temp = *stack;
 	if (temp == NULL)
-		return;
+	{
+		dprintf(STDERR_FILENO, "L%i: can't swap, stack too short\n", line_number);
+		safe_exit(*stack);
+	}
 	while (temp->next != NULL)
 		temp = temp->next;
 
@@ -26,20 +29,25 @@ void swap(stack_t **stack, unsigned int line_number)
 		if (temp->prev == NULL)
 		{
 			dprintf(STDERR_FILENO, "L%i: can't swap, stack too short\n", line_number);
-			fclose(fd);
-			free(buffer);
-			free(safe_buffer);
-			free_stqu(*stack);
-			exit(EXIT_FAILURE);
+			safe_exit(*stack);
 		}
 
 		temp_node = temp->prev;
-
-		temp->prev = temp_node->prev;
-		temp->next = temp_node;
-
-		(temp_node->prev)->next = temp;
-		temp_node->prev = temp;
-		temp_node->next = NULL;
+		if (temp_node->prev != NULL)
+		{
+			temp->prev = temp_node->prev;
+			temp->next = temp_node;
+			(temp_node->prev)->next = temp;
+			temp_node->prev = temp;
+			temp_node->next = NULL;
+		}
+		else
+		{
+			temp->next = temp_node;
+			temp->prev = NULL;
+			temp_node->next = NULL;
+			temp_node->prev = temp;
+			*stack = temp;
+		}
 	}
 }
