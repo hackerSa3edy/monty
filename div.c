@@ -10,7 +10,7 @@ void check_div(int n, stack_t *stack, unsigned int line);
  * @line_number: number of the line in the monty bytecode file.
  *
  */
-void div(stack_t **stack, unsigned int line_number)
+void _div(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = NULL, *temp_node = NULL, *new_node = NULL;
 	int sum = 0;
