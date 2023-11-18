@@ -1,6 +1,7 @@
 #include "monty.h"
 
 void opcode_error_handle(unsigned int line_number);
+void handle_args(int argu_c, char **argu_v);
 
 char *token = NULL, *buffer = NULL, *safe_buffer = NULL;
 FILE *fd = NULL;
