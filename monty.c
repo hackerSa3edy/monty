@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 
 		safe_buffer = safeBuffer(buffer);
 		token = strtok(safe_buffer, " ");
-		if (token == NULL || strcmp(token[0], "#") == 0)
+		if (token == NULL || strncmp(token, "#", 1) == 0)
 		{
 			free(safe_buffer);
 			continue;
