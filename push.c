@@ -56,12 +56,8 @@ void push(stack_t **head, unsigned int line_number)
  * @stack: stack_t linked list
  * @line: line number
 */
-void push_errors_handle(stack_t *stack, unsigned int line)
+void push_errors_handle(stack_t *head, unsigned int line)
 {
 	dprintf(STDERR_FILENO, "L%i: usage: push integer\n", line);
-	fclose(fd);
-	free(buffer);
-	free(safe_buffer);
-	free_stqu(stack);
-	exit(EXIT_FAILURE);
+	safe_exit(head, line);
 }

@@ -16,7 +16,10 @@ void pint(stack_t **stack, unsigned int line_number)
 		return;
 	temp = *stack;
 	if (temp == NULL)
-		return;
+	{
+		dprintf(STDERR_FILENO, "L%i: can't pint, stack empty", line_number);
+		safe_exit(*stack, line_number);
+	}
 	while (temp->next != NULL)
 		temp = temp->next;
 
