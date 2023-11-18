@@ -1,5 +1,6 @@
 #include "monty.h"
 
+void push_errors_handle(stack_t *head, unsigned int line);
 /**
  * push - adds a new node at the end of a stack_t list.
  *
@@ -10,21 +11,18 @@
 void push(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp = NULL, *new_node = NULL;
-	int n;
+	int n, index;
 
 	if (head == NULL)
 		return;
 
 	token = strtok(NULL, " ");
 	if (token == NULL)
-	{
-		dprintf(STDERR_FILENO, "L%i: usage: push integer", line_number);
-		fclose(fd);
-		free(buffer);
-		free(safe_buffer);
-		free_stqu(*head);
-		exit(EXIT_FAILURE);
-	}
+		push_errors_handle(*head, line_number);
+	for (index = 0; token[index]; index++)
+		if (!isdigit(token[index]))
+			push_errors_handle(*head, line_number);
+
 	n = atoi(token);
 
 	if (*head == NULL)
@@ -49,4 +47,21 @@ void push(stack_t **head, unsigned int line_number)
 	new_node->next = NULL;
 	temp->next = new_node;
 	new_node->prev = temp;
+}
+
+
+/**
+ * push_errors_handle - handle push errors
+ *
+ * @stack: stack_t linked list
+ * @line: line number
+*/
+void push_errors_handle(stack_t *stack, unsigned int line)
+{
+	dprintf(STDERR_FILENO, "L%i: usage: push integer\n", line);
+	fclose(fd);
+	free(buffer);
+	free(safe_buffer);
+	free_stqu(stack);
+	exit(EXIT_FAILURE);
 }

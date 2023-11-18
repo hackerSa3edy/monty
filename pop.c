@@ -31,7 +31,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		dprintf(STDERR_FILENO, "L%i: can't pop an empty stack", line_number);
+		dprintf(STDERR_FILENO, "L%i: can't pop an empty stack\n", line_number);
 		fclose(fd);
 		free(buffer);
 		free(safe_buffer);
