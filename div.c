@@ -85,7 +85,7 @@ void check_div(int n, stack_t *stack, unsigned int line)
 {
 	if (n == 0)
 	{
-		dprintf(STDERR_FILENO, "L%i: division by zero", line);
+		dprintf(STDERR_FILENO, "L%i: division by zero\n", line);
 		safe_exit(stack);
 	}
 }
