@@ -1,10 +1,16 @@
 push 1
-pint
-pop
 push 2
-pint
-pop
 push 3
 pint
+nop
+push 4
+swap
 pop
+add
+push 1
+sub
+push 2
+div
+push 12
+mul
 pall

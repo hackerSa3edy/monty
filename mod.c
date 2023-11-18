@@ -34,7 +34,7 @@ void mod(stack_t **stack, unsigned int line_number)
 		temp_node = temp;
 		temp = temp->prev;
 		temp->next = NULL;
-		sum %= temp->n;
+		sum = temp->n % sum;
 		free(temp_node);
 
 		temp_node = temp;

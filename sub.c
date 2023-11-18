@@ -29,11 +29,11 @@ void sub(stack_t **stack, unsigned int line_number)
 		if (temp->prev == NULL)
 			safe_sub(*stack, line_number);
 
-		sum += temp->n;
+		sum -= temp->n;
 		temp_node = temp;
 		temp = temp->prev;
 		temp->next = NULL;
-		sum -= temp->n;
+		sum += temp->n;
 		free(temp_node);
 
 		temp_node = temp;
