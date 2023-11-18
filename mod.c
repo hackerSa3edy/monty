@@ -75,7 +75,7 @@ void safe_mod(stack_t *stack, int line_number)
 }
 
 /**
- * check_mod
+ * check_mod - check 0 division
  *
  * @n: number to be checked.
  * @stack: stack_t linked list.

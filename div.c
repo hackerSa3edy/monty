@@ -4,7 +4,7 @@ void safe_div(stack_t *stack, int line_number);
 void check_div(int n, stack_t *stack, unsigned int line);
 
 /**
- * div - divide the top 2 nodes data.
+ * _div - divide the top 2 nodes data.
  *
  * @stack: current node.
  * @line_number: number of the line in the monty bytecode file.
@@ -75,7 +75,7 @@ void safe_div(stack_t *stack, int line_number)
 }
 
 /**
- * check_div
+ * check_div - check 0 division
  *
  * @n: number to be checked.
  * @stack: stack_t linked list.
