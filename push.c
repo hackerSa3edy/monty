@@ -53,7 +53,7 @@ void push(stack_t **head, unsigned int line_number)
 /**
  * push_errors_handle - handle push errors
  *
- * @stack: stack_t linked list
+ * @head: stack_t linked list
  * @line: line number
 */
 void push_errors_handle(stack_t *head, unsigned int line)

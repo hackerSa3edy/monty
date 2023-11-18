@@ -4,7 +4,6 @@
  * safe_exit - handle push errors
  *
  * @stack: stack_t linked list
- * @line: line number
 */
 void safe_exit(stack_t *stack)
 {
