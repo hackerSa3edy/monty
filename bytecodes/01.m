@@ -5,4 +5,5 @@ pint
 push 4
 swap
 pop
+add
 pall

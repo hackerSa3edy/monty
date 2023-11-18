@@ -30,7 +30,6 @@ void pop(stack_t **stack, unsigned int line_number)
 		if (temp != NULL)
 			temp->next = NULL;
 		free(temp_node);
-		*stack = temp;
 	}
 	else
 	{
