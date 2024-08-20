@@ -46,7 +46,7 @@ To get a local copy up and running, follow these steps:
 3. Compile the project:
 
    ```sh
-   gcc -Wall -Werror -Wextra -pedantic *.c -o monty
+   gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o monty
    ```
 
 ## Usage
@@ -54,7 +54,7 @@ To get a local copy up and running, follow these steps:
 To run the Monty interpreter, compile all .c files in the repository and run the output file with a .m file as an argument:
 
 ```bash
-gcc -Wall -Werror -Wextra -pedantic *.c -o monty
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o monty
 ./monty bytecodes/00.m
 ```
 
